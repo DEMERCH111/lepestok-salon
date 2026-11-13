@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Клиенты — Лепесток · Админка</title>
+  <link rel="icon" type="image/jpeg" href="logo.jpeg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="admin-body">
+
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar__logo">Лепесток</div>
+           <nav class="admin-menu">
+        <a href="admin.html" class="admin-menu__link"><span class="admin-menu__icon">📦</span> Товары</a>
+        <a href="admin-incomings.html" class="admin-menu__link"><span class="admin-menu__icon">📥</span> Поступления</a>
+        <a href="admin-appointments.html" class="admin-menu__link"><span class="admin-menu__icon">📅</span> Записи</a>
+        <a href="admin-clients.html" class="admin-menu__link active"><span class="admin-menu__icon">👥</span> Клиенты</a>
+        <a href="admin-sales.html" class="admin-menu__link"><span class="admin-menu__icon">💰</span> Продажи</a>
+        <a href="admin-rentals.html" class="admin-menu__link"><span class="admin-menu__icon">👗</span> Аренда</a>
+        <a href="admin-analytics.html" class="admin-menu__link"><span class="admin-menu__icon">📊</span> Аналитика</a>
+        <a href="admin-partners.html" class="admin-menu__link"><span class="admin-menu__icon">🤝</span> Партнёры</a>
+        <a href="admin-promocodes.html" class="admin-menu__link"><span class="admin-menu__icon">🏷️</span> Все промокоды</a>
+        <div class="admin-menu__divider" id="adminOnlyDivider"></div>
+        <a href="admin-profile.html" class="admin-menu__link"><span class="admin-menu__icon">⚙️</span> Профиль</a>
+        <a href="admin-staff.html" class="admin-menu__link" id="staffMenuLink"><span class="admin-menu__icon">🔐</span> Сотрудники</a>
+        <div class="admin-menu__divider"></div>
+        <a href="index.html" target="_blank" class="admin-menu__link"><span class="admin-menu__icon">↗</span> Открыть сайт</a>
+      </nav>
+      <div class="admin-sidebar__bottom">
+        <div class="admin-user">👤 <span id="adminUserLabel">admin</span></div>
+        <button class="btn btn--outline btn--sm" id="logoutBtn" style="width:100%">Выйти</button>
+      </div>
+    </aside>
+
+    <main class="admin-content">
+      <div class="admin-toolbar">
+        <h1>База клиентов</h1>
+        <button class="btn btn--primary" id="addClientBtn">+ Добавить клиента</button>
+      </div>
+
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>ФИО</th>
+              <th>Телефон</th>
+              <th>Дата добавления</th>
+              <th>Действия</th>
+            </tr>
+          </thead>
+          <tbody id="clientsBody"></tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <!-- МОДАЛКА ФОРМЫ КЛИЕНТА -->
+  <div class="modal" id="clientModal">
+    <div class="modal__content">
+      <button class="modal__close" data-close="clientModal">×</button>
+      <h3>Новый клиент</h3>
+      
+      <form id="clientForm" class="admin-form">
+        <label>
+          ФИО *
+          <input type="text" id="clName" required placeholder="Иванова Анна">
+        </label>
+        <label>
+          Телефон *
+          <input type="tel" id="clPhone" required placeholder="+7 999 123-45-67">
+        </label>
+
+        <div class="admin-form__actions">
+          <button type="button" class="btn btn--outline" data-close="clientModal">Отмена</button>
+          <button type="submit" class="btn btn--primary">Сохранить</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+ <script type="module" src="js/admin-clients.js"></script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- ОСНОВНЫЕ SEO-ТЕГИ -->
+  <title>Свадебный салон «Лепесток» в Адлере — Прокат и продажа свадебных платьев</title>
+  <meta name="description" content="Свадебные и вечерние платья в Адлере. Прокат, продажа, детские платья. Услуги партнёров: мужские костюмы, свадебные букеты, маникюр, визажисты, ведущие, аренда авто, фотографы. Записывайтесь на примерку онлайн!">
+  <meta name="keywords" content="свадебный салон Адлер, свадебные платья Адлер, прокат свадебных платьев Адлер, купить свадебное платье Адлер, вечерние платья Адлер, прокат вечерних платьев, детские платья Адлер, свадебный салон Сочи, мужской свадебный костюм Адлер, свадебный букет Адлер, букет для невесты Адлер, свадебный маникюр Адлер, свадебная прическа Адлер, визажист Адлер, свадебный макияж Адлер, ведущий на свадьбу Адлер, тамада Адлер, музыканты на свадьбу Адлер, аренда авто на свадьбу Адлер, прокат свадебной машины Адлер, лимузин на свадьбу, свадебный фотограф Адлер, видеограф на свадьбу Адлер, свадебные приглашения Адлер, оформление свадебного зала Адлер, свадебный торт Адлер, свадебные аксессуары, подушки для колец">
+  
+  <!-- Для красивых ссылок в соцсетях (ВКонтакте, WhatsApp, Telegram) -->
+  <meta property="og:title" content="Свадебный салон «Лепесток» в Адлере">
+  <meta property="og:description" content="Прокат и продажа свадебных платьев. Все услуги для вашей свадьбы в одном месте.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="logo.jpeg">
+
+  <link rel="icon" type="image/jpeg" href="logo.jpeg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-with-bg"></body>
+
+  <!-- ШАПКА -->
+    <header class="header">
+    <div class="container header__inner">
+        <a href="#" class="logo">
+        <img src="logo.jpeg" alt="Лепесток" class="logo__img">
+      </a>
+
+      <div style="display: flex; align-items: center;">
+        <!-- Иконки соцсетей -->
+        <div class="header-socials" id="headerSocials">
+          <!-- Сюда JS вставит ссылки -->
+        </div>
+
+        <!-- ОБЕРТКА ДЛЯ БУРГЕРА И МЕНЮ -->
+        <div class="burger-wrapper">
+          <button class="burger-btn" id="burgerBtn">
+            <span></span><span></span><span></span>
+          </button>
+
+          <nav class="nav" id="mobileNav">
+            <a href="#catalog">Каталог</a>
+            <a href="partners.html">Партнёры</a>
+            <a href="#about">О салоне</a>
+            <a href="#contacts">Контакты</a>
+            <a href="javascript:void(0)" id="mobileFavBtn" style="display:flex; align-items:center; gap:10px; padding-right: 10px;">
+              Избранное <span class="badge" id="mobileFavCount" style="position:static;">0</span>
+            </a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ГЕРОЙ-БЛОК -->
+  <section class="hero">
+    <div class="container">
+      <h1>Белый Лепесток</h1>
+      <p class="hero-subtitle">Для самых нежных историй любви</p>
+      <a href="#catalog" class="btn btn--primary">Смотреть каталог</a>
+    </div>
+  </section>
+
+  <!-- КАТАЛОГ -->
+  <section class="catalog container" id="catalog">
+    <h2>Каталог</h2>
+    <div class="filters">
+      <button class="filter-btn active" data-filter="all">Все</button>
+      <button class="filter-btn" data-filter="wedding">Свадебные</button>
+      <button class="filter-btn" data-filter="evening">Вечерние</button>
+      <button class="filter-btn" data-filter="jewelry">Украшения</button>
+      <button class="filter-btn" data-filter="accessories">Аксессуары</button>
+    </div>
+
+    <!-- Фильтры по размерам (генерируются автоматически) -->
+    <div class="filters" id="sizeFilters" style="margin-top: 10px; margin-bottom: 30px; display: none;">
+      <span style="font-size: 14px; color: #8a7a7a; margin-right: 10px; align-self: center;">Размер:</span>
+      <!-- Кнопки размеров появятся здесь -->
+    </div>
+    <div class="products" id="productsGrid"></div>
+  </section>
+
+  <!-- ПОДВАЛ -->
+   <footer class="footer" id="contacts">
+    <div class="container" id="footerContacts">
+      <!-- Сюда автоматически вставятся контакты и соцсети из админки -->
+    </div>
+  </footer>
+
+  <!-- МОДАЛКА ИЗБРАННОГО -->
+  <div class="modal" id="favModal">
+    <div class="modal__content">
+      <button class="modal__close" data-close="favModal">×</button>
+      <h3>Избранное</h3>
+      <div id="favItems"></div>
+    </div>
+  </div>
+
+    <!-- МОДАЛКА О САЛОНЕ -->
+  <div class="modal" id="aboutModal">
+    <div class="modal__content" style="max-width: 600px; text-align: left;">
+      <button class="modal__close" data-close="aboutModal">×</button>
+      <h3 style="text-align: center; font-family: Georgia, serif; font-size: 26px; margin-bottom: 20px; color: var(--dark-pink);">О салоне «Белый Лепесток»</h3>
+      
+      <div style="font-size: 15px; line-height: 1.6; color: #444;">
+        <p style="margin-bottom: 15px;">Добро пожаловать в наш свадебный салон в самом сердце Адлера! Мы верим, что каждая девушка заслуживает чувствовать себя сказочной принцессой в самый важный день своей жизни.</p>
+        
+        <p style="margin-bottom: 15px;"><strong>«Белый Лепесток»</strong> — это не просто магазин платьев. Это пространство, где начинаются самые нежные истории любви. В нашем ассортименте представлены изысканные свадебные и вечерние наряды, а также эксклюзивные аксессуары.</p>
+        
+        <div style="background: #fdf8f5; padding: 15px; border-radius: 10px; text-align: center; border: 1px dashed var(--dark-pink);">
+          <p style="margin: 0; font-weight: bold; color: var(--dark-pink);">Ждём вас в гости!</p>
+          <p style="margin: 5px 0 0 0; font-size: 14px;">г. Адлер, ул. Демократическая, д. 50/7А</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- МОДАЛКА СЕРТИФИКАТА (при переходе по QR) -->
+  <div class="modal" id="promoModal">
+    <div class="modal__content" style="text-align:center; border: 2px dashed var(--dark-pink);">
+      <button class="modal__close" data-close="promoModal">×</button>
+      <h3 style="color:var(--dark-pink); font-size:24px;">Вам подарок! 🎁</h3>
+      <p style="font-size:16px; margin-bottom:15px;">Салон «Лепесток» дарит вам бонус по промокоду:</p>
+      <div style="font-size:28px; font-weight:bold; background:#fbe9ea; padding:15px; border-radius:10px; margin-bottom:15px; letter-spacing:2px;" id="promoModalCode"></div>
+      <p style="font-size:14px; color:#8a7a7a;">Покажите этот код на примерке или при покупке.</p>
+      <button class="btn btn--primary" style="margin-top:20px;" data-close="promoModal">Отлично!</button>
+    </div>
+  </div>
+
+  <!-- МОДАЛКА ЗАПИСИ (скопирована сюда) -->
+  <div class="modal" id="appointmentModal">
+    <div class="modal__content">
+      <button class="modal__close" data-close="appointmentModal">×</button>
+      <h3>Запись на примерку</h3>
+      <p class="appointment-product" id="appointmentProduct"></p>
+      <form id="appointmentForm" class="admin-form">
+        <label>ФИО *<input type="text" id="apName" required placeholder="Иванова Анна Сергеевна"></label>
+        <label>Телефон *<input type="tel" id="apPhone" required placeholder="+7 999 123-45-67"></label>
+                <label>
+          Промокод (если есть)
+          <input type="text" id="apPromo" placeholder="Введите код партнёра">
+        </label>
+        <div class="admin-form__row">
+          <label>Дата *<input type="date" id="apDate" required></label>
+          <label>Время *<select id="apTime" required></select></label>
+        </div>
+        <p class="appointment-hint">Салон работает с 10:00 до 18:00. Занятые слоты не показываются.</p>
+        <p class="login-form__error" id="apError"></p>
+        <div class="admin-form__actions">
+          <button type="button" class="btn btn--outline" data-close="appointmentModal">Отмена</button>
+          <button type="submit" class="btn btn--primary">Записаться</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+    <script type="module" src="js/script.js"></script>
+<script src="js/appointment.js"></script> 
+<script src="js/menu.js"></script>
+</body>
+</html>

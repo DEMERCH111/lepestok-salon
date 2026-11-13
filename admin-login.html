@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Вход в админ-панель — Лепесток</title>
+    <link rel="icon" type="image/jpeg" href="logo.jpeg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="login-body">
+
+  <div class="login-box">
+    <div class="login-box__logo">Лепесток</div>
+    <h1 class="login-box__title">Вход в админ-панель</h1>
+    <p class="login-box__subtitle">Только для администратора салона</p>
+
+    <form id="loginForm" class="login-form">
+      <label>
+        Логин
+        <input type="text" id="loginUser" autocomplete="username" required>
+      </label>
+      <label>
+        Пароль
+        <input type="password" id="loginPass" autocomplete="current-password" required>
+      </label>
+      <button type="submit" class="btn btn--primary login-form__btn">Войти</button>
+      <p class="login-form__error" id="loginError"></p>
+    </form>
+
+    <a href="index.html" class="login-box__back">← Вернуться на сайт</a>
+  </div>
+
+   <script type="module" src="js/admin-auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ваш сертификат — Лепесток</title>
+  <link rel="icon" type="image/jpeg" href="logo.jpeg">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body { background: #fdf8f5; display: flex; flex-direction: column; align-items: center; padding: 20px; font-family: 'Segoe UI', sans-serif; }
+    .certificate { background: #fff; max-width: 400px; width: 100%; border-radius: 20px; box-shadow: 0 20px 60px rgba(201,139,143,0.2); overflow: hidden; border: 2px solid var(--pink); text-align: center; position: relative; }
+    .certificate__header { background: var(--dark-pink); color: #fff; padding: 30px 20px; font-family: Georgia, serif; font-size: 24px; }
+    .certificate__body { padding: 30px 20px; }
+    .certificate__title { font-size: 18px; margin-bottom: 10px; color: #8a7a7a; }
+    .certificate__bonus { font-size: 28px; font-weight: bold; color: var(--text); margin-bottom: 20px; }
+    .certificate__code-box { border: 2px dashed var(--dark-pink); border-radius: 10px; padding: 15px; margin-bottom: 20px; background: #fbe9ea; }
+    .certificate__code { font-size: 32px; font-weight: bold; letter-spacing: 3px; color: var(--dark-pink); }
+    .certificate__text { font-size: 14px; color: #8a7a7a; margin-bottom: 20px; }
+    .btn-print { background: var(--dark-pink); color: #fff; border: none; padding: 15px 30px; border-radius: 30px; font-size: 16px; cursor: pointer; width: 100%; }
+  </style>
+</head>
+<body>
+
+  <div class="certificate" id="certificateBlock">
+    <div class="certificate__header">Лепесток</div>
+    <div class="certificate__body">
+      <div class="certificate__title">Ваш персональный бонус</div>
+      <div class="certificate__bonus" id="promoBonus">Загрузка...</div>
+      
+      <div class="certificate__code-box">
+        <div style="font-size:12px; color:#8a7a7a; margin-bottom:5px;">ВАШ ПРОМОКОД</div>
+        <div class="certificate__code" id="promoCodeText">...</div>
+      </div>
+
+           <div class="certificate__text">
+        <strong>Покажите этот код любому партнёру сети «Лепесток»</strong> (включая наш салон), чтобы получить скидку на услуги и товары.
+      </div>
+
+      <button class="btn-print" onclick="window.print()">Сохранить / Распечатать</button>
+      <a href="index.html" style="display:block; margin-top:20px; color:#8a7a7a; text-decoration:none; font-size:14px;">Перейти в каталог →</a>
+    </div>
+  </div>
+
+  <script type="module" src="js/supabase.js"></script>
+  <script src="js/store.js"></script>
+  <script>
+    async function initPromoPage() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const promoCode = urlParams.get("promo");
+
+      if (!promoCode) {
+        document.getElementById("promoBonus").textContent = "Промокод не найден";
+        document.getElementById("promoCodeText").textContent = "—";
+        return;
+      }
+
+      document.getElementById("promoCodeText").textContent = promoCode.toUpperCase();
+
+      try {
+        // Ждем ответа от базы данных
+        const partner = await getPartnerByPromo(promoCode.toUpperCase());
+        
+        if (partner) {
+          document.getElementById("promoBonus").textContent = partner.bonus || "Скидка";
+        } else {
+          document.getElementById("promoBonus").textContent = "Скидка 5000 ₽ на платье";
+        }
+      } catch (err) {
+        document.getElementById("promoBonus").textContent = "Скидка 5000 ₽ на платье";
+      }
+    }
+
+    // Запускаем после загрузки
+    initPromoPage();
+  </script>
+</body>
+</html>

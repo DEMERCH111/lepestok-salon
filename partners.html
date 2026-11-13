@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Свадебные партнёры в Адлере — Услуги для свадьбы | Лепесток</title>
+  <meta name="description" content="Все для вашей свадьбы в Адлере: мужские костюмы, свадебные букеты, маникюр, визажисты, ведущие, тамада, аренда авто, фотографы, торты и оформление зала. Записывайтесь онлайн.">
+  <meta name="keywords" content="свадебные партнёры Адлер, мужской свадебный костюм Адлер, свадебный букет Адлер, маникюр на свадьбу Адлер, свадебная прическа Адлер, визажист Адлер, свадебный макияж Адлер, ведущий на свадьбу Адлер, тамада Адлер, музыканты на свадьбу Адлер, аренда авто на свадьбу Адлер, прокат свадебной машины Адлер, лимузин на свадьбу, свадебный фотограф Адлер, видеограф на свадьбу Адлер, свадебные приглашения Адлер, оформление свадебного зала Адлер, свадебный торт Адлер">
+
+  <meta property="og:title" content="Свадебные партнёры в Адлере — Лепесток">
+  <meta property="og:description" content="Все услуги для свадьбы в одном месте. Записывайтесь онлайн.">
+  <meta property="og:image" content="logo.jpeg">
+
+  <link rel="icon" type="image/jpeg" href="logo.jpeg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header__inner">
+           <a href="index.html" class="logo"><img src="logo.jpeg" alt="Лепесток" class="logo__img"></a>
+
+      <div style="display: flex; align-items: center;">
+        <!-- Иконки соцсетей -->
+        <div class="header-socials" id="headerSocials">
+          <!-- Сюда JS вставит ссылки -->
+        </div>
+
+        <!-- ОБЕРТКА ДЛЯ БУРГЕРА И МЕНЮ -->
+        <div class="burger-wrapper">
+          <button class="burger-btn" id="burgerBtn">
+            <span></span><span></span><span></span>
+          </button>
+
+          <nav class="nav" id="mobileNav">
+            <a href="index.html#catalog">Каталог</a>
+            <a href="partners.html">Партнёры</a>
+            <a href="index.html#contacts">Контакты</a>
+            <a href="javascript:void(0)" id="mobileFavBtn" style="display:flex; align-items:center; gap:10px;">
+              Избранное <span class="badge" id="mobileFavCount" style="position:static;">0</span>
+            </a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="catalog container" style="padding-top: 40px;">
+    <h2>Наши партнёры</h2>
+    <p style="text-align:center; color:#8a7a7a; margin-bottom: 30px;">Мы собрали лучших мастеров и специалистов для вашего идеального дня.</p>
+    
+    <!-- ФИЛЬТРЫ ПО КАТЕГОРИЯМ -->
+    <div class="filters" id="partnerFilters">
+      <button class="filter-btn active" data-filter="all">Все услуги</button>
+    </div>
+
+    <div class="products" id="partnersGrid"></div>
+  </section>
+
+  <footer class="footer" id="contacts">
+    <div class="container">
+      <p>© 2026 Лепесток — свадебный салон</p>
+      <p><a href="admin-login.html" style="color:#c98b8f;text-decoration:none;font-size:12px;">⚙ Вход для администратора</a></p>
+    </div>
+  </footer>
+
+   <!-- МОДАЛКА ИЗБРАННОГО -->
+  <div class="modal" id="favModal">
+    <div class="modal__content">
+      <button class="modal__close" data-close="favModal">×</button>
+      <h3>Избранное</h3>
+      <div id="favItems"></div>
+    </div>
+  </div>
+
+   <!-- МОДАЛКА О САЛОНЕ -->
+  <div class="modal" id="aboutModal">
+    <div class="modal__content" style="max-width: 600px; text-align: left;">
+      <button class="modal__close" data-close="aboutModal">×</button>
+      <h3 style="text-align: center; font-family: Georgia, serif; font-size: 26px; margin-bottom: 20px; color: var(--dark-pink);">О салоне «Белый Лепесток»</h3>
+      
+      <div style="font-size: 15px; line-height: 1.6; color: #444;">
+        <p style="margin-bottom: 15px;">Добро пожаловать в наш свадебный салон в самом сердце Адлера! Мы верим, что каждая девушка заслуживает чувствовать себя сказочной принцессой в самый важный день своей жизни.</p>
+        
+        <p style="margin-bottom: 15px;"><strong>«Белый Лепесток»</strong> — это не просто магазин платьев. Это пространство, где начинаются самые нежные истории любви. В нашем ассортименте представлены изысканные свадебные и вечерние наряды, а также эксклюзивные аксессуары.</p>
+        
+        <div style="background: #fdf8f5; padding: 15px; border-radius: 10px; text-align: center; border: 1px dashed var(--dark-pink);">
+          <p style="margin: 0; font-weight: bold; color: var(--dark-pink);">Ждём вас в гости!</p>
+          <p style="margin: 5px 0 0 0; font-size: 14px;">г. Адлер, ул. Демократическая, д. 50/7А</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- МОДАЛКА ТОВАРА ПАРТНЁРА -->
+  <div class="modal" id="partnerProductModal">
+    <div class="modal__content">
+      <button class="modal__close" data-close="partnerProductModal">×</button>
+      <img id="ppImage" src="" style="width: 100%; height: 250px; object-fit: cover; border-radius: 10px; margin-bottom: 15px;">
+      <h2 id="ppTitle" style="font-family: Georgia, serif; margin-bottom: 10px;"></h2>
+      <div id="ppPrice" style="font-size: 20px; font-weight: bold; color: var(--dark-pink); margin-bottom: 20px;"></div>
+      
+      <div style="background: #faf5f4; padding: 15px; border-radius: 10px; margin-bottom: 20px;">
+        <div style="font-size: 14px; color: #8a7a7a; margin-bottom: 5px;">ПРОДАВЕЦ</div>
+        <div id="ppPartnerName" style="font-weight: bold; font-size: 16px; margin-bottom: 10px;"></div>
+        <div id="ppAddress" style="font-size: 14px; margin-bottom: 5px;"></div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <button class="btn btn--primary" id="ppBookBtn">Записаться</button>
+        <a href="#" class="btn btn--outline" id="ppShopBtn">Открыть магазин</a>
+        <a href="#" class="btn btn--outline" id="ppCallBtn">Позвонить</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- МОДАЛКА ЗАПИСИ -->
+  <div class="modal" id="appointmentModal">
+    <div class="modal__content">
+      <button class="modal__close" data-close="appointmentModal">×</button>
+      <h3>Запись на услугу</h3>
+      <p class="appointment-product" id="appointmentProduct"></p>
+      <form id="appointmentForm" class="admin-form">
+        <label>ФИО *<input type="text" id="apName" required placeholder="Иванова Анна Сергеевна"></label>
+        <label>Телефон *<input type="tel" id="apPhone" required placeholder="+7 999 123-45-67"></label>
+        <label>Промокод (если есть)<input type="text" id="apPromo" placeholder="Введите код партнёра"></label>
+        <div class="admin-form__row">
+          <label>Дата *<input type="date" id="apDate" required></label>
+          <label>Время *<select id="apTime" required></select></label>
+        </div>
+        <p class="appointment-hint">Выберите удобную дату и время, мы свяжемся с вами для подтверждения.</p>
+        <p class="login-form__error" id="apError"></p>
+        <div class="admin-form__actions">
+          <button type="button" class="btn btn--outline" data-close="appointmentModal">Отмена</button>
+          <button type="submit" class="btn btn--primary">Записаться</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script type="module" src="js/partners.js"></script>
+<script src="js/appointment.js"></script>
+<script src="js/menu.js"></script>
+</body>
+</html>

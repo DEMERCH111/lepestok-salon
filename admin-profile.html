@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Профиль салона — Лепесток · Админка</title>
+  <link rel="icon" type="image/jpeg" href="logo.jpeg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="admin-body">
+
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar__logo">Лепесток</div>
+            <nav class="admin-menu">
+        <a href="admin.html" class="admin-menu__link"><span class="admin-menu__icon">📦</span> Товары</a>
+        <a href="admin-incomings.html" class="admin-menu__link"><span class="admin-menu__icon">📥</span> Поступления</a>
+        <a href="admin-appointments.html" class="admin-menu__link"><span class="admin-menu__icon">📅</span> Записи</a>
+        <a href="admin-clients.html" class="admin-menu__link"><span class="admin-menu__icon">👥</span> Клиенты</a>
+        <a href="admin-sales.html" class="admin-menu__link"><span class="admin-menu__icon">💰</span> Продажи</a>
+        <a href="admin-rentals.html" class="admin-menu__link"><span class="admin-menu__icon">👗</span> Аренда</a>
+        <a href="admin-analytics.html" class="admin-menu__link"><span class="admin-menu__icon">📊</span> Аналитика</a>
+        <a href="admin-partners.html" class="admin-menu__link"><span class="admin-menu__icon">🤝</span> Партнёры</a>
+        <a href="admin-promocodes.html" class="admin-menu__link"><span class="admin-menu__icon">🏷️</span> Все промокоды</a>
+        <div class="admin-menu__divider" id="adminOnlyDivider"></div>
+        <a href="admin-profile.html" class="admin-menu__link active"><span class="admin-menu__icon">⚙️</span> Профиль</a>
+        <a href="admin-staff.html" class="admin-menu__link" id="staffMenuLink"><span class="admin-menu__icon">🔐</span> Сотрудники</a>
+        <div class="admin-menu__divider"></div>
+        <a href="index.html" target="_blank" class="admin-menu__link"><span class="admin-menu__icon">↗</span> Открыть сайт</a>
+      </nav>
+      <div class="admin-sidebar__bottom">
+        <div class="admin-user">👤 <span id="adminUserLabel">admin</span></div>
+        <button class="btn btn--outline btn--sm" id="logoutBtn" style="width:100%">Выйти</button>
+      </div>
+    </aside>
+
+    <main class="admin-content">
+      <div class="admin-toolbar">
+        <h1>Профиль салона</h1>
+      </div>
+
+      <div class="admin-table-wrap" style="padding: 30px; max-width: 800px;">
+        <form id="shopProfileForm" class="admin-form">
+          
+          <label>
+            Название салона *
+            <input type="text" id="spName" required placeholder="Салон «Лепесток»">
+          </label>
+
+          <label>
+            Адрес *
+            <input type="text" id="spAddress" required placeholder="г. Адлер, ул. Ленина, д. 10">
+          </label>
+
+          <label>
+            Телефон *
+            <input type="tel" id="spPhone" required placeholder="+7 (999) 123-45-67">
+          </label>
+
+          <div class="admin-menu__divider"></div>
+
+          <h3 style="font-size: 16px; margin-bottom: 10px; color: var(--dark-pink);">Ссылки на соцсети и мессенджеры</h3>
+          
+          <div class="admin-form__row">
+            <label>
+              ВКонтакте (vk.com)
+              <input type="url" id="spVk" placeholder="https://vk.com/lepestok_adler">
+            </label>
+            <label>
+              Телеграм (t.me)
+              <input type="url" id="spTg" placeholder="https://t.me/lepestok_adler">
+            </label>
+          </div>
+
+          <div class="admin-form__row">
+            <label>
+              WhatsApp (wa.me)
+              <input type="url" id="spWa" placeholder="https://wa.me/79991234567">
+            </label>
+            <label>
+              Макс (ссылка)
+              <input type="url" id="spMax" placeholder="https://max.ru/lepestok_adler">
+            </label>
+          </div>
+
+          <div class="admin-form__actions" style="margin-top: 20px;">
+            <button type="submit" class="btn btn--primary">Сохранить изменения</button>
+          </div>
+
+        </form>
+      </div>
+    </main>
+  </div>
+
+<script type="module" src="js/admin-profile.js"></script>
+</body>
+</html>

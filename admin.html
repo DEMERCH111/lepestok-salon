@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Товары — Лепесток · Админка</title>
+  <link rel="icon" type="image/jpeg" href="logo.jpeg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="admin-body">
+
+  <div class="admin-layout">
+    <!-- БОКОВОЕ МЕНЮ -->
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar__logo">Лепесток</div>
+            <nav class="admin-menu">
+        <a href="admin.html" class="admin-menu__link active"><span class="admin-menu__icon">📦</span> Товары</a>
+        <a href="admin-incomings.html" class="admin-menu__link"><span class="admin-menu__icon">📥</span> Поступления</a>
+        <a href="admin-appointments.html" class="admin-menu__link"><span class="admin-menu__icon">📅</span> Записи</a>
+        <a href="admin-clients.html" class="admin-menu__link"><span class="admin-menu__icon">👥</span> Клиенты</a>
+        <a href="admin-sales.html" class="admin-menu__link"><span class="admin-menu__icon">💰</span> Продажи</a>
+        <a href="admin-rentals.html" class="admin-menu__link"><span class="admin-menu__icon">👗</span> Аренда</a>
+        <a href="admin-analytics.html" class="admin-menu__link"><span class="admin-menu__icon">📊</span> Аналитика</a>
+        <a href="admin-partners.html" class="admin-menu__link"><span class="admin-menu__icon">🤝</span> Партнёры</a>
+        <a href="admin-promocodes.html" class="admin-menu__link"><span class="admin-menu__icon">🏷️</span> Все промокоды</a>
+        <div class="admin-menu__divider" id="adminOnlyDivider"></div>
+        <a href="admin-profile.html" class="admin-menu__link"><span class="admin-menu__icon">⚙️</span> Профиль</a>
+        <a href="admin-staff.html" class="admin-menu__link" id="staffMenuLink"><span class="admin-menu__icon">🔐</span> Сотрудники</a>
+        <div class="admin-menu__divider"></div>
+        <a href="index.html" target="_blank" class="admin-menu__link"><span class="admin-menu__icon">↗</span> Открыть сайт</a>
+      </nav>
+      <div class="admin-sidebar__bottom">
+        <div class="admin-user">👤 <span id="adminUserLabel">admin</span></div>
+        <button class="btn btn--outline btn--sm" id="logoutBtn" style="width:100%">Выйти</button>
+      </div>
+    </aside>
+
+    <!-- КОНТЕНТ -->
+    <main class="admin-content">
+      <div class="admin-toolbar">
+        <h1>Товары</h1>
+        <button class="btn btn--primary" id="addProductBtn">+ Добавить товар</button>
+      </div>
+
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Фото</th>
+              <th>Название</th>
+              <th>Категория</th>
+              <th>Тип</th>
+              <th>Цена, ₽</th>
+              <th>Действия</th>
+            </tr>
+          </thead>
+          <tbody id="adminProductsBody"></tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <!-- МОДАЛКА ФОРМЫ ТОВАРА -->
+  <div class="modal" id="productModal">
+    <div class="modal__content modal__content--wide">
+      <button class="modal__close" data-close="productModal">×</button>
+      <h3 id="productModalTitle">Добавить товар</h3>
+      <form id="productForm" class="admin-form">
+        <input type="hidden" id="pfId">
+        
+        <label style="background: #fdf8f5; padding: 12px; border-radius: 8px; border: 1px dashed var(--dark-pink);">
+          <span style="color: var(--dark-pink); font-weight: bold;">💡 Подсказка: выбрать из поступлений</span>
+          <select id="pfIncomingSelect" style="margin-top: 8px;">
+            <option value="">-- Ввести вручную --</option>
+          </select>
+        </label>
+
+        <label>Название *<input type="text" id="pfTitle" required placeholder="Платье «Аделина»"></label>
+        <div class="admin-form__row">
+          <label>Категория *
+            <select id="pfCategory" required>
+              <option value="wedding">Свадебное платье</option>
+              <option value="evening">Вечернее платье</option>
+              <option value="jewelry">Украшение</option>
+              <option value="accessories">Аксессуар</option>
+            </select>
+          </label>
+          <label>Тип *
+            <select id="pfType" required>
+              <option value="Продажа">Продажа</option>
+              <option value="Аренда">Аренда</option>
+              <option value="Аренда · Продажа">Аренда и продажа</option>
+            </select>
+          </label>
+        </div>
+        <div class="admin-form__row">
+          <label>Цена, ₽ <input type="number" id="pfPrice" min="0" placeholder="25000 (оставьте пустым для 'Цена по запросу')"></label>
+          <label>Размеры (через запятую)<input type="text" id="pfSizes" placeholder="XS, S, M, L"></label>
+        </div>
+        <label>Фотографии товара (можно выбрать сразу несколько)<input type="file" id="pfImageFile" accept="image/*" multiple></label>
+        <label>Или ссылка на фото (если фото хранится на другом сайте)<input type="text" id="pfImage" placeholder="https://... или images/dress1.jpg"></label>
+        
+        <!-- Блок для отображения ВСЕХ загруженных фото с крестиками -->
+        <div style="margin-top: 15px; margin-bottom: 5px; font-size: 14px; font-weight: bold;">Текущие фотографии товара (нажмите ×, чтобы удалить):</div>
+        <div id="currentImagesList" style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 15px; min-height: 30px;"></div>
+
+        <!-- Блок для превью новых файлов, которые только что выбрали -->
+        <div style="margin-top: 10px; margin-bottom: 5px; font-size: 14px; font-weight: bold;">Новые фото (будут добавлены при сохранении):</div>
+        <div id="pfImagePreview" class="admin-image-preview" style="display: flex; gap: 10px; flex-wrap: wrap; min-height: 30px;"></div>
+        <label>Описание<textarea id="pfDescription" rows="4" placeholder="Подробное описание..."></textarea></label>
+        <div class="admin-form__actions">
+          <button type="button" class="btn btn--outline" data-close="productModal">Отмена</button>
+          <button type="submit" class="btn btn--primary">Сохранить</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- МОДАЛКА ПРОСМОТРА ФОТО -->
+  <div class="modal modal--image" id="adminImageModal">
+    <button class="modal__close modal__close--floating" onclick="document.getElementById('adminImageModal').classList.remove('open')">×</button>
+    <img id="adminImageModalImg" src="" alt="">
+  </div>
+
+  <script type="module" src="js/admin.js"></script>
+</body>
+</html>
